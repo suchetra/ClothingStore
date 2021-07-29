@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* --------------
+HEADER ------
+--------------- */
+
+#formHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: grey;
+    flex-wrap: wrap;
+    height: 50px;
+}
+
+#formHeader p {
+    margin: auto 0.5rem;
+}
+
+#formHeader input{
+    width: 100px;
+    border-radius: 5px;
+}
+
+
+nav {
+    height: 4rem;
+}
+
+nav li {
+    text-decoration: none;
+    list-style: none;
+    height: 100%;
+}
+
+nav > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    min-height: 2rem;
+    height: 4rem;
+    background-color: rgb(133, 133, 255);
+}
+
+nav ul li {
+    height: 100%;
+    margin: 0 auto; 
+    line-height: 4rem;
+}
+
+/* --------------
+MAIN ------
+--------------- */
+
+main {
+    /* background-color: rgb(214, 214, 214); */
+    background-color: rgb(255, 255, 255);
+    /* min-height: 100vh; */
+    /* "gap between main and footer" */
+    /* https://css-tricks.com/forums/topic/unwanted-space-between-content-and-footer/ */
+    overflow: hidden;
+}
+
+
+h1, h2 {
+    padding: 2rem;
+    color: rgb(80, 80, 255);
+
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+p {
+    margin: 2rem;
+    text-align: justify;
+}
+
+.article {
+    margin: 2rem auto;
+}
+
+#articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+#articles div {   
+    border: 2px solid black;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#articles div a {
+    list-style: none;
+    margin-left: 1rem;
+}
+
+#articles div a:hover {
+    animation: 3s multicolor;
+}
+
+@keyframes multicolor {
+    0% {
+        color: #000;
+    }
+    33% {
+        color: #FF0000;
+    }
+    66% {
+        color: #0000FF;
+    }
+    100% {
+        color: #FFF;
+    }
+}
+
+/* --------------
+FOOTER ------
+--------------- */
+/* https://dev.to/nehalahmadkhan/how-to-make-footer-stick-to-bottom-of-web-page-3i14 */
+
+
+footer {
+    background-color: rgb(71, 71, 71);
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer li {
+    list-style: none;
+}
+
+footer li {
+    color: rgb(255, 255, 255);
+    margin: 0;
+    text-align: center;
+}
+
+footer li:hover {
+    color: rgb(217, 230, 255);
+    margin: 0;
+    text-align: center;
+}
