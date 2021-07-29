@@ -9,17 +9,17 @@ if(isset($_GET['page'])) {
 
     
     if ($_GET['page'] == 'accueil') {
-        include ('accueil.php');
+        include ('SECTION/accueil.php');
     } if ($_GET['page'] == 'catalogue'){
-        include ('catalogue.php');
+        include ('SECTION/catalogue.php');
 
     } if ($_GET['page'] == 'article'){
-        include ('catalogue/article.php');
+        include ('SECTION/article.php');
     // fail open stream qui marche: ca veut dire qu'il le trouve pas
 
     }
 } else {
-    include ('accueil.php');
+    include ('SECTION/accueil.php');
 }
 ?>
 </main>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <?php
         
-    require ('functions.php');
+    require ('ASIDE/functions.php');
 
     if(isset($_GET['page'])) {
             if (isset($_GET['article'])) {
