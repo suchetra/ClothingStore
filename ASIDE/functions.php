@@ -47,12 +47,12 @@ function afficheArticle($article){
         ]
     ];
 
-    foreach($tab as $truc) {  
+    foreach($tab as $element) {  
         
-        if ($article == $truc['nom']){
-            echo $truc["nom"], " ";
-            echo $truc["prix"], " € ";
-            echo $truc["photo"], " ";
+        if ($article == $element['nom']){
+            echo $element["nom"], " ";
+            echo $element["prix"], " € ";
+            echo $element["photo"], " ";
         }
     }
 
