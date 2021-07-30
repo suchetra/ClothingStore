@@ -70,6 +70,7 @@ main {
     /* "gap between main and footer" */
     /* https://css-tricks.com/forums/topic/unwanted-space-between-content-and-footer/ */
     overflow: hidden;
+    height: 100%;
 }
 
 
@@ -151,6 +152,7 @@ footer {
     flex-direction: row;
     justify-content: space-around;
     padding: 2rem;
+    margin-top: auto;
 }
 
 footer ul {

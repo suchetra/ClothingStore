@@ -22,44 +22,21 @@ $tab = [
 ];
 
 foreach($tab as $article) { 
-    if(isset($_GET['article'])){
-        $articleR = $_GET['article'];
-        $articleB = $article['id'];
-    }
-    if(isset($_POST['search'])){
     
-    $articleR = $_POST['search'];
-    $articleB = $article['nom'];
-    }
-
-
-    if ($articleR == $articleB) {
+    if ($_GET['article'] == $article["id"]) {
 
         echo '<div class="article">';
         echo $article["nom"], " ";
         echo $article["prix"], " € ";
         echo $article["photo"], " ";
-        // echo '</a>';
+        echo '</a>';
         echo '</div>';    
-    } 
-
-
-
-    // if ($_GET['article'] == $article["id"]) {
-
-    //     echo '<div class="article">';
-    //     echo $article["nom"], " ";
-    //     echo $article["prix"], " € ";
-    //     echo $article["photo"], " ";
-    //     echo '</a>';
-    //     echo '</div>';    
     
-    // } 
-      
+    }
+
+   
     // echo '<a href="article.php?article='.$article["id"].'"><img src="'.$article["photo"].'"  ';
 
 }
-
-
 
 ?>
