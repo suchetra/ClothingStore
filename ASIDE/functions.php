@@ -58,7 +58,40 @@ function afficheArticle($article){
 
 }
 
-function totalPanier() {
-    echo '<div class="article">';
+function totalPanier($article, $quantite) {
+
+    $tab = [
+        [
+            "id" => 1,
+            "nom" => "chaussure",
+            "prix" => 70,
+            'photo' => '<img src ="../images/chaussures.jpg" width="100" height="100"/>'
+        ],
+        [
+            "id" => 2,
+            "nom" => "casquette",
+            "prix" => 20,
+            'photo' => '<img src ="../images/casquette.jpg" width="100" height="100"/>'
+        ],
+        [
+            "id" => 3,
+            "nom" => "tshirt",
+            "prix" => 40,
+            'photo' => '<img src ="../images/tshirt.jpg" width="100" height="100"/>'
+        ]
+    ];
+
+    foreach($tab as $element) {  
+        
+        if ($article == $element['id']){
+            echo $element["photo"], " ";
+            echo $element["nom"], " ";
+            echo $element["prix"], " € ";
+            echo "total : ", $element["prix"] * $quantite." € ";
+        }
+    }
+
+
+
 }
 ?>

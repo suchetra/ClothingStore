@@ -64,9 +64,11 @@ include ('ASIDE/addArticle.php');
         
         echo $article["nom"]." ".$article["prix"]." € ".'<a href="index.php?page=article&article='.$article["id"].'">'.'<img src ="'.$article["photo"].'" width="100" height="100"/>'." ".'</a>';
         
-        echo '<form action="SECTION/panier.php" method="POST">'
-            '<input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>'.'<input id=$article["id"] type="hidden" >'.'<p><input type="submit" value="Valider" /></p>'.
-        '</form>';
+        echo '<form action="index.php?page=panier" method="POST">
+            <input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>
+            <input name="id" value='.$article["id"].' type="hidden" >
+            <p><input type="submit" value="Valider" /></p>
+        </form>';
         // echo '<input type="checkbox" name="checked" value="checked"/>';
         // echo input id hidden
         echo '</div>';        
