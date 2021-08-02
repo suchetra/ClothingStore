@@ -1,3 +1,17 @@
+<?php
+if(!isset($_SESSION)){
+        session_start();
+    }
+    
+if(!isset($_SESSION['panier'])){
+    $_SESSION['panier'] = array();
+}
+
+require ('db.class.php');
+// fonction pour construire l'objet
+$DB = new DB();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

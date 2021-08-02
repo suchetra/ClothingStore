@@ -1,6 +1,9 @@
 <?php
 include('header.php');
 ?>
+<?php
+var_dump($DB->query('SELECT * FROM products'));
+?>
 
 <main>
 <?php

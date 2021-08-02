@@ -4,6 +4,16 @@
 include ('ASIDE/addArticle.php');
 ?>
 
+<?php
+$products = $DB->query('SELECT * FROM products');
+foreach ($products as $product): ?>
+<<div class="article">>
+    <p>name:ipad</p>
+</div>
+
+
+
+
 <h1>Le catalogue des bonnes affaires 
     
 <?php 
@@ -64,10 +74,12 @@ include ('ASIDE/addArticle.php');
         
         echo $article["nom"]." ".$article["prix"]." € ".'<a href="index.php?page=article&article='.$article["id"].'">'.'<img src ="'.$article["photo"].'" width="100" height="100"/>'." ".'</a>';
         
-        echo '<form action="SECTION/panier.php" method="POST">'
-            '<input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>'.'<input id=$article["id"] type="hidden" >'.'<p><input type="submit" value="Valider" /></p>'.
-        '</form>';
-        // echo '<input type="checkbox" name="checked" value="checked"/>';
+        echo '<form action="SECTION/panier.php" method="POST">';
+        echo '<input type="number" name="quantite" min="1" required="required" placeholder="Entrer une quantité"/>';
+        echo '<input type="hidden" name="id" value='.$article["id"].' >';
+        echo '<p><input type="submit" name="submit" value="Valider" /></p>';
+        echo '</form>';
+        echo '<input type="checkbox" name="checked" value="checked"/>';
         // echo input id hidden
         echo '</div>';        
     }
