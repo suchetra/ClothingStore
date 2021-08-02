@@ -9,9 +9,6 @@ if(isset($_GET['page'])) {
 
     if (isset($_GET['page'])){
         include 'SECTION/'.$_GET['page'].'.php';
-    }else{
-    
-     include ('SECTION/accueil.php');
     }
 
     // if ($_GET['page'] == 'accueil') {
@@ -25,9 +22,9 @@ if(isset($_GET['page'])) {
     // fail open stream qui marche: ca veut dire qu'il le trouve pas
 }
     // }
-// } else {
-//     include ('SECTION/accueil.php');
-// }
+else {
+    include ('SECTION/accueil.php');
+ }
 ?>
 </main>
 <?php

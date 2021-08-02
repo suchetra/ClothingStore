@@ -57,4 +57,8 @@ function afficheArticle($article){
     }
 
 }
+
+function totalPanier() {
+    echo '<div class="article">';
+}
 ?>

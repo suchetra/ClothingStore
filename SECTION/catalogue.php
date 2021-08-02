@@ -1,3 +1,9 @@
+<h2>Ajouter un article</h2>
+
+<?php
+include ('ASIDE/addArticle.php');
+?>
+
 <h1>Le catalogue des bonnes affaires 
     
 <?php 
@@ -10,9 +16,6 @@
 
 <p>C'est les soldes ! faites des bonnes affaires parmi chaussures, casquettes, t-shirts... </p>
 
-<?php
-include ('ASIDE/addArticle.php');
-?>
 
 <h2>Articles du jour<link href="bonjour.php" rel="stylesheet"></h2>
 
@@ -39,32 +42,40 @@ include ('ASIDE/addArticle.php');
             "id" => 1,
             "nom" => "chaussure",
             "prix" => 70,
-            'photo' => '<img src ="../images/chaussures.jpg" width="100" height="100"/>'
+            'photo' => '../images/chaussures.jpg'
         ],
         [
             "id" => 2,
             "nom" => "casquette",
             "prix" => 20,
-            'photo' => '<img src ="../images/casquette.jpg" width="100" height="100"/>'
+            'photo' => '../images/casquette.jpg'
         ],
         [
             "id" => 3,
             "nom" => "tshirt",
             "prix" => 40,
-            'photo' => '<img src ="../images/tshirt.jpg" width="100" height="100"/>'
+            'photo' => '../images/tshirt.jpg'
         ]
     ];
 
     foreach($tab as $article) {
-        echo '<div>';
+        echo '<div class="article">';
         // méthode de postage
-        echo $article["nom"], " ";
-        echo $article["prix"], " € ";
-        echo '<a href="index.php?page=article&article='.$article["id"].'">';
-        echo $article["photo"], " ";
-        echo '</a>';
+        
+        echo $article["nom"]." ".$article["prix"]." € ".'<a href="index.php?page=article&article='.$article["id"].'">'.'<img src ="'.$article["photo"].'" width="100" height="100"/>'." ".'</a>';
+        
+        echo '<form action="SECTION/panier.php" method="POST">'
+            '<input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>'.'<input id=$article["id"] type="hidden" >'.'<p><input type="submit" value="Valider" /></p>'.
+        '</form>';
+        // echo '<input type="checkbox" name="checked" value="checked"/>';
+        // echo input id hidden
         echo '</div>';        
     }
+    // echo '<form action="SECTION/panier.php">';
+    
+    // echo '</form>';
     ?>
 </div>
+
+
 
