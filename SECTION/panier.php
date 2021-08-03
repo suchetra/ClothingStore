@@ -5,8 +5,13 @@ echo "Voici les articles sélectionnés";
 echo '<br />';
 echo '<br />';
 
-if (isset($_POST['id'])) {
-    totalPanier($_POST['id'], $_POST['quantite']);
+
+
+if (isset($_POST['checkbox'])) {
+    foreach($_POST['checkbox'] as $produit){
+        // totalPanier($_POST['id'], $_POST['quantite']);
+        echo $produit;
+    }
 }
 
 ?>

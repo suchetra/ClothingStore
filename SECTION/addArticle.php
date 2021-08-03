@@ -1,3 +1,4 @@
+<h2>Ajouter un article</h2>
 <p>
     Ajouter un nouvel article à la base de données.
 </p>
