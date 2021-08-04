@@ -16,15 +16,13 @@ if (isset($_POST['quantite'])) {
 
 <?php 
 
-if(isset($quantiteP)){
+if(isset($_POST['modifQuantite'])){
     modifQuantite($_POST['id'],$quantiteP, true);
 }
 
 if(isset($_POST['valider'])){
     modifQuantite($_POST['id'],$quantiteP, false);
 }
-
-
 
 
 
