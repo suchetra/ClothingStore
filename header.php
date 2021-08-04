@@ -1,3 +1,19 @@
+<?php session_start(); 
+if (isset($_GET['destroy'])){  
+    session_destroy(); 
+}?>
+<!-- § -->
+
+
+<!-- // $_SESSION['panier'] = array();
+// $_SESSION['panier']['id'] = array();
+// $_SESSION['panier']['quantite'] = array();
+// $_SESSION['panier']['prix'] = array(); -->
+
+
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +29,8 @@
                 echo '<title>Accueil</title>';
             } elseif ($_GET['page'] == 'catalogue'){
                 echo '<title>catalogue</title>';
+            } elseif ($_GET['page'] == 'panier'){
+                echo '<title>panier</title>';
             } 
         } 
         ?>
@@ -37,6 +55,7 @@
             <li><a href="index.php?page=accueil">Accueil</a></li>
             <li><a href="index.php?page=catalogue">Catalogue</a></li>
             <li><a href="index.php?page=addArticle">Ajouter un article</a></li>
+            <li><a href="index.php?page=panier">Panier</a></li>
             <li>#</li>
         </ul>
 

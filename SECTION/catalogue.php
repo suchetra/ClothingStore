@@ -1,48 +1,3 @@
-<div id="articles">
-<?php
-    $tab = [
-        [
-            "id" => 1,
-            "nom" => "chaussure",
-            "prix" => 70,
-            'photo' => '../images/chaussures.jpg'
-        ],
-        [
-            "id" => 2,
-            "nom" => "casquette",
-            "prix" => 20,
-            'photo' => '../images/casquette.jpg'
-        ],
-        [
-            "id" => 3,
-            "nom" => "tshirt",
-            "prix" => 40,
-            'photo' => '../images/tshirt.jpg'
-        ]
-    ];
-
-    foreach($tab as $article) {
-        echo '<div class="article">';
-        // méthode de postage
-        
-        echo $article["nom"]." ".$article["prix"]." € ".'<a href="index.php?page=article&article='.$article["id"].'">'.'<img src ="'.$article["photo"].'" width="100" height="100"/>'." ".'</a>';
-        
-        echo '<form action="index.php?page=panier" method="POST">
-            <input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>
-            <input name="id" value='.$article["id"].' type="hidden">';
-        
-        echo '</div>';        
-    }
-    echo '<fieldset>';
-    echo '<input type="checkbox" name="checkbox[]" value="chaussure">';
-    echo '<input type="checkbox" name="checkbox[]" value="casquette">';
-    echo '<input type="checkbox" name="checkbox[]" value="tshirt">';
-    echo '</fieldset>';
-    echo '<p><input type="submit" value="Valider" /></p>
-    </form>';
-?>
-</div>
-
 <h2>Le catalogue des bonnes affaires</h2>
 <p>C'est les soldes ! faites des bonnes affaires parmi chaussures, casquettes, t-shirts... </p>
 
@@ -80,7 +35,9 @@
         echo '<form action="index.php?page=panier" method="POST">
             <input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>
             <input name="id" value='.$article["id"].' type="hidden">
-            <p><input type="submit" value="Valider" /></p>
+            <input name="active" type="hidden">
+            <input name="prix" value ='.$article["prix"].' type="hidden">
+            <p><input name="valider" type="submit" value="Valider" /></p>
         </form>';
         // echo '<input type="checkbox" name="checked" value="checked"/>';
         // echo input id hidden

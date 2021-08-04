@@ -185,6 +185,13 @@ addArticle ------
 }
 
 /* --------------
+panier ------
+--------------- */
+.articlePanier{
+    background-color: rgb(190, 141, 141);
+}
+
+/* --------------
 FOOTER ------
 --------------- */
 /* https://dev.to/nehalahmadkhan/how-to-make-footer-stick-to-bottom-of-web-page-3i14 */
