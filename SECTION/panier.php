@@ -5,23 +5,23 @@
 <?php 
 
 // on verifie que l'input quantite (qui envoie quantite par $post) a bien ete recu.
-if (isset($_POST['quantite'])) {
-    // si elle a ete envoyer alors la variable $quantitep devien la valeurs recu 
-    $quantiteP = $_POST['quantite'];
-} else {
-    // sinon la quantite = 1 de bases
-    $quantiteP = 0;
-}
+// if (isset($_POST['quantite'])) {
+//     // si elle a ete envoyer alors la variable $quantitep devien la valeurs recu 
+//     $quantiteP = $_POST['quantite'];
+// } else {
+//     // sinon la quantite = 1 de bases
+//     $quantiteP = 0;
+// }
 ?>
 
 <?php 
 
 if(isset($_POST['modifQuantite'])){
-    modifQuantite($_POST['id'],$quantiteP, true);
+    modifQuantite($_POST['id'],$_POST['quantite'], true);
 }
 
 if(isset($_POST['valider'])){
-    modifQuantite($_POST['id'],$quantiteP, false);
+    modifQuantite($_POST['id'],$_POST['quantite'], false);
 }
 
 

@@ -117,7 +117,7 @@ function totalPanier($article, $quantite) {
 function modifQuantite ($id, $quantite, $ajout) {
     $existe = false;
     if (!isset($_SESSION['panier'])){
-        $_SESSION['panier'][] = ['id' => $id, 'quantite' => $quantite]; 
+        $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']]; 
     } else {
         $modif = count($_SESSION['panier']);
         for($i=0; $i<$modif; $i++){
@@ -133,7 +133,7 @@ function modifQuantite ($id, $quantite, $ajout) {
         }
         
         if (!$existe) {
-            $_SESSION['panier'][] = ['id' => $id, 'quantite' => $quantite];
+            $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']];
         }
     }
 
