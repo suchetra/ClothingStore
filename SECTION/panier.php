@@ -97,3 +97,4 @@ if(isset($_SESSION['panier'])) {
     <input type="hidden" name="deco" value="deconnexion">
     <button>session_destroy()</button>
 </form> -->
+
