@@ -126,7 +126,6 @@ function modifQuantite ($id, $quantite, $ajout) {
                     $_SESSION['panier'][$i]['quantite'] = $quantite;
                 } if ($ajout==false){
                     $_SESSION['panier'][$i]['quantite'] += $quantite;
-                    // $existe = true;
                 }
                 $existe = true;
             }

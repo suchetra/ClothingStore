@@ -2,17 +2,6 @@
     
 <p>Voici les articles sélectionnés :</p>
 <br /><br />
-<?php 
-
-// on verifie que l'input quantite (qui envoie quantite par $post) a bien ete recu.
-// if (isset($_POST['quantite'])) {
-//     // si elle a ete envoyer alors la variable $quantitep devien la valeurs recu 
-//     $quantiteP = $_POST['quantite'];
-// } else {
-//     // sinon la quantite = 1 de bases
-//     $quantiteP = 0;
-// }
-?>
 
 <?php 
 
