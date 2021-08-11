@@ -29,6 +29,8 @@ if (isset($_GET['destroy'])){
                 echo '<title>Accueil</title>';
             } elseif ($_GET['page'] == 'catalogue'){
                 echo '<title>catalogue</title>';
+            } elseif ($_GET['page'] == 'catalogue2'){
+                echo '<title>catalogue 2</title>';
             } elseif ($_GET['page'] == 'panier'){
                 echo '<title>panier</title>';
             } 
@@ -56,6 +58,7 @@ if (isset($_GET['destroy'])){
             <li><a href="index.php?page=catalogue">Catalogue</a></li>
             <li><a href="index.php?page=addArticle">Ajouter un article</a></li>
             <li><a href="index.php?page=panier">Panier</a></li>
+            <li><a href="index.php?page=catalogue2">Catalogue 2</a></li>
             <li>#</li>
         </ul>
 
