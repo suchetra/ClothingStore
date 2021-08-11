@@ -6,8 +6,24 @@ echo '<br /><br />';
 totalChaqueCommande();
 echo '<br /><br />';
 nbCommandeParClient();
+echo '<br /><br />';
+// creerCommandeTroisArticles($a,$b,$c)
 
+if(isset($_POST['idCommande'], $_POST['idProduit'], $_POST['quantite'])){
+    creerCommandeUnArticles($_POST['idCommande'],$_POST['idProduit'],$_POST['quantite']);
+}
 ?>
+
+<form action="" method="POST">
+    <label for="idCommande">idCommande :</label>
+    <input type="text" name="idCommande" id="idCommande">
+    <label for="idProduit">idProduit :</label>
+    <input type="text" name="idProduit" id="idProduit">
+    <label for="quantite">quantite :</label>
+    <input type="text" name="quantite" id="quantite">
+    <input type="submit">
+</form>
+
 
 
 <h2>Le catalogue version SQL</h2>
@@ -45,7 +61,7 @@ while ($donnees = $reponse->fetch())
 ?>
     <p>
     <strong>ID du produit</strong> : <?php echo $donnees['idProduit']; ?><br />
-    Nom du produit : <?php echo $donnees['nomArticle']; ?><br />Description : <?php echo $donnees['description']; ?><br />Prix : <?php echo $donnees['prix']; ?> € <br />Image : <?php echo $donnees['image']; ?><br />Poids : <?php echo $donnees['poids']; ?><br />Quantité : <?php echo $donnees['quantiteDispo']; ?><br />En vente : <em><?php echo $donnees['enVente']; ?></em>
+    Nom du produit : <?php echo $donnees['nomArticle']; ?><br />Description : <?php echo $donnees['description']; ?><br />Prix : <?php echo $donnees['prix']; ?> € <br />Image : <img src = <?php echo $donnees['image']; ?> width = "100"> <br />Poids : <?php echo $donnees['poids']; ?><br />Quantité : <?php echo $donnees['quantiteDispo']; ?><br />En vente : <em><?php echo $donnees['enVente']; ?></em>
    </p>
 <?php
 }

@@ -225,8 +225,10 @@ function produitRupture(){
 
     while ($donnees = $reponse->fetch())
     {
-        print_r($donnees);
-        echo '<br /><br />';
+        // print_r($donnees);
+        echo "Liste des produits n'ayant pas de stock : "."<br />";
+        echo "ID produit : ".$donnees['idProduit']."<br />";
+        echo "Quantité : ".$donnees['quantiteDispo']."<br /><br />";
     }
 
     $reponse->closeCursor(); 
@@ -246,7 +248,11 @@ function commandesSinceTen(){
 
     while ($donnees = $reponse->fetch())
     {
-        print_r($donnees);
+        // print_r($donnees);
+        echo "Liste des commandes sur les 10 derniers jours : "."<br />";
+        echo "ID commande : ".$donnees['idCommande']."<br />";
+        echo "ID client : ".$donnees['idClient']."<br />";
+        echo "Date : ".$donnees['date'];
         echo '<br /><br />';
     }
 
@@ -263,11 +269,14 @@ function totalChaqueCommande(){
             die('Erreur : '.$e->getMessage());
     }
 
-    $reponse = $bdd->query('SELECT idCommande, SUM(prix*quantite) AS prix_total FROM commande_produit INNER JOIN produits ON produits.idProduit = commande_produit.idProduit GROUP BY idCommande');
+    $reponse = $bdd->query('SELECT idCommande, ROUND(SUM(prix*quantite),2) AS prix_total FROM commande_produit INNER JOIN produits ON produits.idProduit = commande_produit.idProduit GROUP BY idCommande');
 
     while ($donnees = $reponse->fetch())
     {
-        print_r($donnees);
+        // print_r($donnees);
+        echo "Total de chaque commande : "."<br />";
+        echo "ID commande : ".$donnees['idCommande']."<br />";
+        echo "Total de la commande : ".$donnees['prix_total']." €";
         echo '<br /><br />';
     }
 
@@ -284,18 +293,63 @@ function nbCommandeParClient(){
             die('Erreur : '.$e->getMessage());
     }
 
-    $reponse = $bdd->query('SELECT idClient, COUNT(idClient) FROM commandes GROUP BY idClient');
+    $reponse = $bdd->query('SELECT idClient, COUNT(idClient) AS nombre FROM commandes GROUP BY idClient');
 
     while ($donnees = $reponse->fetch())
     {
-        print_r($donnees);
+        echo "Nombre de commandes par clients : "."<br />";
+        echo "ID client : ".$donnees['idClient']."<br />";
+        echo "Nombre de commandes : ".$donnees['nombre'];
+        // print_r($donnees);
         echo '<br /><br />';
     }
 
     $reponse->closeCursor(); 
 }
 
+function creerCommandeUnArticles($idCommande, $idProduit, $quantite){
+    try
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=importationetape3;charset=utf8', 'nico', 'nico');
+    }
+    catch(Exception $e)
+    {
+            die('Erreur : '.$e->getMessage());
+    }
 
+    $reponse = $bdd->prepare('INSERT INTO commande_produit(idCommandeProduit, idCommande, idProduit, quantite) VALUES (?,?,?,?)');
+
+    $reponse->execute(array(NULL, $idCommande, $idProduit, $quantite));
+
+    $reponse = $bdd->query('SELECT * FROM commande_produit');
+
+    // pierre version plus rapide mais moins sécurisé
+    // $reponse = $bdd->exec('INSERT INTO commande_produit(idCommandeProduit, idCommande, idProduit, quantite) VALUES (array(NULL, $idCommande, $idProduit, $quantite))');
+
+    // raph version
+    // $article = $bdd->prepare('INSERT INTO article(nom, image, distance_terre, duree, depart, navette, commentaire, prix, grosdes) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)');
+
+    
+    // $article->execute(array(($_POST['nom']), ($_POST['image']), $_POST['distance_terre'], $_POST['duree'], $_POST['depart'], $_POST['navette'], $_POST['commentaire'], $_POST['prix'], $_POST['grosdes']));
+
+
+
+
+
+
+
+    // while ($donnees = $reponse->fetch())
+    // {
+    //     echo "Nouvelle commande avec un article : "."<br />";
+    //     echo "ID commande : ".$donnees['idCommande']."<br />";
+    //     echo "ID produit : ".$donnees['idProduit']."<br />";
+    //     echo "quantité : ".$donnees['quantite'];
+    //     // print_r($donnees);
+    //     echo '<br /><br />';
+    // }
+
+    // $reponse->closeCursor(); 
+}
 
 // function creerCommandeTroisArticles(){
 //     INSERT INTO commande_produit(idCommandeProduit, idCommande, idProduit, quantite) VALUES (14,6,1,1),(15,6,2,1),(16,6,12,1)
