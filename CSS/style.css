@@ -41,7 +41,8 @@ HEADER ------
 
 #formRecherche input{
     height: 25px;
-    align-items: center;
+    margin: auto 0;
+    /* align-items: center; */
 }
 
 nav {

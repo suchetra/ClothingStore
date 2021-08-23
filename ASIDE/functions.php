@@ -321,18 +321,27 @@ function creerCommandeUnArticles($idCommande, $idProduit, $quantite){
 
     $reponse->execute(array(NULL, $idCommande, $idProduit, $quantite));
 
-    $reponse = $bdd->query('SELECT * FROM commande_produit');
-
+    
     // pierre version plus rapide mais moins sécurisé
     // $reponse = $bdd->exec('INSERT INTO commande_produit(idCommandeProduit, idCommande, idProduit, quantite) VALUES (array(NULL, $idCommande, $idProduit, $quantite))');
-
+    
     // raph version
     // $article = $bdd->prepare('INSERT INTO article(nom, image, distance_terre, duree, depart, navette, commentaire, prix, grosdes) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)');
-
+    
     
     // $article->execute(array(($_POST['nom']), ($_POST['image']), $_POST['distance_terre'], $_POST['duree'], $_POST['depart'], $_POST['navette'], $_POST['commentaire'], $_POST['prix'], $_POST['grosdes']));
+    $reponse = $bdd->query('SELECT * FROM commande_produit');
+    
+    while ($donnees = $reponse->fetch())
+    {
+        echo "Nombre de commandes par clients : "."<br />";
+        echo "ID client : ".$donnees['idClient']."<br />";
+        echo "Nombre de commandes : ".$donnees['nombre'];
+        // print_r($donnees);
+        echo '<br /><br />';
+    }
 
-
+    $reponse->closeCursor();
 
 
 
