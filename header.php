@@ -1,4 +1,5 @@
-<?php session_start(); 
+<?php        require ('ASIDE/class.php');
+ session_start(); 
 if (isset($_GET['destroy'])){  
     session_destroy(); 
 }?>
@@ -21,7 +22,7 @@ if (isset($_GET['destroy'])){
         <link rel="stylesheet" href="CSS/style.css">
         <?php
         require ('ASIDE/functions.php');
-        require ('ASIDE/class.php');
+
 
         if(isset($_GET['page'])) {
             if (isset($_GET['article'])) {
@@ -40,7 +41,9 @@ if (isset($_GET['destroy'])){
                 echo '<title>clients</title>';
             } elseif ($_GET['page'] == 'panier'){
                 echo '<title>panier</title>';
-            } 
+            } elseif ($_GET['page'] == 'panierObjet'){
+                echo '<title>panier objet</title>';
+            }
         } 
         ?>
     </head>
@@ -69,6 +72,8 @@ if (isset($_GET['destroy'])){
             <li><a href="index.php?page=catalogue3">Catalogue 3</a></li>
             <li><a href="index.php?page=catalogueObjet">Catalogue objet</a></li>
             <li><a href="index.php?page=clients">Clients</a></li>
+            <li><a href="index.php?page=panierObjet">Panier objet</a></li>
+
         </ul>
 
         <?php

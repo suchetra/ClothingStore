@@ -6,6 +6,7 @@ $client = new Client(4, 'truc', 55, 'truc@email.fr');
 $client->displayClient();
 
 
+
 try
 {
     $bdd = new PDO('mysql:host=localhost;dbname=importationetape3;charset=utf8', 'nico', 'nico');

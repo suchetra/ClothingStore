@@ -110,13 +110,13 @@
 
 
 
+// afficher un nouvel article
+// $article = new Article (5, "bracelet", "c'est un petit bracelet", 44, "../images/chaussures.jpg");
+// // $article->nom = "bracelet";
+// // $article->description = "c'est un petit bracelet";
+// // $article->prix = "44";
 
-$article = new Article (5, "bracelet", "c'est un petit bracelet", 44, "../images/chaussures.jpg");
-// $article->nom = "bracelet";
-// $article->description = "c'est un petit bracelet";
-// $article->prix = "44";
-
-$article->displayArticle();
+// $article->displayArticle();
 
 
 

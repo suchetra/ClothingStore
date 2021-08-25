@@ -55,6 +55,22 @@ class Catalogue {
             echo "Description : " . $this->liste[$k]->description . "<br />";
             echo "Prix : " . $this->liste[$k]->prix . "<br />";
             echo "Image :<img src ='".$this->liste[$k]->photo."' width='100' height='100'/><br /><br />";
+        
+
+
+            echo '<div class="article">';
+        // méthode de postage
+        
+        echo '<form action="index.php?page=panierObjet" method="POST">
+            <input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>
+            <input name="id" value='.$this->liste[$k]->id.' type="hidden">
+            <input name="active" type="hidden">
+            <input name="prix" value ='.$this->liste[$k]->prix.' type="hidden">
+            <p><input name="valider" type="submit" value="Valider" /></p>
+        </form>';
+        // echo '<input type="checkbox" name="checked" value="checked"/>';
+        // echo input id hidden
+        echo '</div>';        
         }
     }
 }
@@ -62,6 +78,7 @@ class Catalogue {
 class ListeClients {
     public array $autreliste;
 
+    // manière foreach
     // public function displayClients() {
     //     foreach ($this->autreliste as $k => $v){
     //         echo "ID : " . $this->autreliste[$k]->id . "<br />";
@@ -87,4 +104,114 @@ class ListeClients {
 
 }
 
+class Panier {
+    public array $panier;
+
+    // public function __construct(int $id, string $nom, string $description, float $prix, string $photo, int $quantite) {
+    //     $this->id = $id;
+    //     $this->nom = $nom;
+    //     $this->description = $description;
+    //     $this->prix = $prix;
+    //     $this->photo = $photo;
+    //     $this->quantite = $quantite;
+    // }
+
+    // public function displayPanier() {
+    //     $arrayLength = count($this->panier);
+    //     $i = 0;
+    //     while($i < $arrayLength) {
+    //         echo "ID : " . $this->panier[$i]->id . "<br />";
+    //         echo "Article : " . $this->panier[$i]->nom . "<br />";
+    //         echo "description : " . $this->panier[$i]->description . "<br />";
+    //         echo "Prix : " . $this->panier[$i]->prix . "<br />";
+    //         echo "Photo : " . $this->panier[$i]->photo . "<br />";
+    //         echo "Quantité : " . $this->panier[$i]->quantite . "<br />";
+
+    //         $i++;
+    //     }
+    // }
+
+    function totalPanier($article, $quantite) {
+
+        $tab = [
+            [
+                "id" => 1,
+                "nom" => "chaussure",
+                "prix" => 70,
+                'photo' => '<img src ="../images/chaussures.jpg" width="100" height="100"/>'
+            ],
+            [
+                "id" => 2,
+                "nom" => "casquette",
+                "prix" => 20,
+                'photo' => '<img src ="../images/casquette.jpg" width="100" height="100"/>'
+            ],
+            [
+                "id" => 3,
+                "nom" => "tshirt",
+                "prix" => 40,
+                'photo' => '<img src ="../images/tshirt.jpg" width="100" height="100"/>'
+            ]
+        ];
+    
+        foreach($tab as $element) {  
+            
+            if ($article == $element['id']){
+                // echo "<div class='"articlePanier"'>;
+                echo "Article : ".$element["photo"].'<br />';
+                echo $element["nom"].'<br />';
+                echo "Quantité et prix : ".$quantite." x ".$element["prix"], " € ".'<br/ >';
+                $total = $element["prix"] * $quantite." € ";
+                echo '<form action="index.php?page=panier" method="POST">
+                
+                <input name="id" value='.$element["id"].' type="hidden">
+                
+                <input type="number" name="quantite" min="0" value="'.$quantite.'"/>
+    
+                <input type="submit" name="modifQuantite" value="Modifier quantité">
+                </form>';
+                // echo "total : ", $element["prix"] * $quantite." € ";
+                echo "total : ".$total;
+                // echo "</div>";
+            }
+        }
+    }
+
+     public function add($id,$quantite) {
+        $this->panier[]=['id'=>$id, 'quantite'=>$quantite ];}
+    //     $arrayLength = count($this->panier);
+    //     $i = 0;
+    //     $reponse = $bdd->exec(INSERT INTO 'vetements'('id', 'quantite') VALUES ($this->panier[$i]->id, $this->panier[$i]->quantite)) 
+    //     while($donnees = $reponse->fetch()) {
+    //         $truc->$panier[]= new Panier;
+    //         $i++;
+    //     }
+    // }
+
+    // public function update($id, $quantite) {
+    //     $arrayLength = count($this->panier);
+    //     $i = 0;
+    //     while($i < $arrayLength) {
+    //         UPDATE 'vetements' SET 'id'=[$this->panier[$i]->id], 'quantite'=[$this->panier[$i]->quantite])
+    //         $i++;
+    //     }
+    // }
+
+    // public function delete($id) {
+    //     $arrayLength = count($this->panier);
+    //     $i = 0;
+    //     while($i < $arrayLength) {
+    //         DELETE 'id'=[$this->panier[$i]->id] FROM 'vetements' 
+    //         $i++;
+    //     }
+    // }
+
+    
+
+}
+
+
 ?>
+
+
+
