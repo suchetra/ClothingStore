@@ -42,10 +42,13 @@ if(isset($_SESSION['panier'])) {
 </form>';
 } 
 // else {
-//     echo 'panier vide';
-// }
-?>
+    //     echo 'panier vide';
+    // }
+    ?>
 
+<form action="" method="POST">
+<input type="submit" name="valider">
+</form>
 <br />
 <!-- <form action="index.php?page=panier" method="POST">
     <input type="submit" name="effacer" value="Effacer panier">

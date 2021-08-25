@@ -21,6 +21,7 @@ if (isset($_GET['destroy'])){
         <link rel="stylesheet" href="CSS/style.css">
         <?php
         require ('ASIDE/functions.php');
+        require ('ASIDE/class.php');
 
         if(isset($_GET['page'])) {
             if (isset($_GET['article'])) {
@@ -33,6 +34,8 @@ if (isset($_GET['destroy'])){
                 echo '<title>catalogue 2</title>';
             } elseif ($_GET['page'] == 'catalogue3'){
                 echo '<title>catalogue 3</title>';
+            } elseif ($_GET['page'] == 'catalogueObjet'){
+                echo '<title>catalogue objet</title>';
             } elseif ($_GET['page'] == 'panier'){
                 echo '<title>panier</title>';
             } 
@@ -62,6 +65,7 @@ if (isset($_GET['destroy'])){
             <li><a href="index.php?page=panier">Panier</a></li>
             <li><a href="index.php?page=catalogue2">Catalogue 2</a></li>
             <li><a href="index.php?page=catalogue3">Catalogue 3</a></li>
+            <li><a href="index.php?page=catalogueObjet">Catalogue objet</a></li>
         </ul>
 
         <?php

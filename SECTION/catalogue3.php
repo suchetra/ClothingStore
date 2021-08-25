@@ -1,8 +1,25 @@
 
 <h2>Le catalogue de la table vêtements de la BDD clothingstore</h2>
 
-<p>Liste des produits</p>
 <?php
+if(isset($_POST['id'])){
+    afficheId($_POST['id']);
+} else {?>
+    <form action="index.php?page=catalogue3" method="POST">
+    <input type="text" id="id" name="id">
+    <input type="submit" name="Valider" value="Valider">
+    </form>
+    <?php
+
+}
+?>
+
+<p>Liste des produits</p>
+
+
+
+
+    <?php
 try
 {
 	// On se connecte à MySQL

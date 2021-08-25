@@ -368,4 +368,58 @@ function creerCommandeUnArticles($idCommande, $idProduit, $quantite){
 //     DELETE FROM clients WHERE idClient NOT IN (SELECT DISTINCT idClient FROM commandes)
 // }
 
+// function avec SQL
+// dans une fonction, jamais de $_POST
+function afficheId($id){
+    try
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=clothingstore;charset=utf8', 'nico', 'nico');
+    }
+    catch(Exception $e)
+    {
+            die('Erreur : '.$e->getMessage());
+    }
+
+        $reponse = $bdd->query('SELECT id, nom, prix FROM vetements WHERE id='.$id);
+    
+        while ($donnees = $reponse->fetch())
+        {
+            // print_r($donnees);
+            echo "ID commande : ".$donnees['id']."<br />";
+            echo "Nom : ".$donnees['nom']."<br />";
+            echo "Prix : ".$donnees['prix']." €";
+            echo '<br /><br />';
+        }
+        $reponse->closeCursor(); 
+}
+
+// function creerCommandeUnArticle($id, $nom, $prix, $photo){
+//     try
+//     {
+//         $bdd = new PDO('mysql:host=localhost;dbname=vetements;charset=utf8', 'nico', 'nico');
+//     }
+//     catch(Exception $e)
+//     {
+//             die('Erreur : '.$e->getMessage());
+//     }
+
+//     $reponse = $bdd->prepare('INSERT INTO vetements(id, nom, prix, photo) VALUES (?,?,?,?)');
+//     $reponse->execute(array(NULL, $id, $nom, $prix, $photo));
+
+//     $reponse = $bdd->query('SELECT * FROM vetements');
+    
+//     while ($donnees = $reponse->fetch())
+//     {
+//         echo "Nombre de commandes par clients : "."<br />";
+//         echo "ID client : ".$donnees['id']."<br />";
+//         echo "Nom : ".$donnees['nom']."<br />";
+//         echo "Prix : ".$donnees['prix'];
+
+//         echo '<br /><br />';
+//     }
+
+//     $reponse->closeCursor();
+
+
+// }
 ?>
