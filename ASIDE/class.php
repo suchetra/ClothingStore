@@ -1,7 +1,6 @@
 <?php
 // version raph
-class Article 
-{
+class Article {
     // public string $nom = "rien";
     // public string $description = "rien";
     // public int $prix = 0;
@@ -18,8 +17,7 @@ class Article
         // $this->disponible = $disponible;
     }
 
-    public function displayArticle()
-    {
+    public function displayArticle() {
         echo "ID : " .$this->id."<br />";
         echo "Article : " .$this->nom."<br />";
         echo "Description : ".$this->description."<br />";
@@ -31,12 +29,26 @@ class Article
     }
 }
 
-class Catalogue
-{
+class Client {
+    public function __construct(int $id, string $nom, int $age, string $email) {
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->age = $age;
+        $this->email = $email;
+    }
+
+    public function displayClient() {
+        echo "ID : " .$this->id."<br />";
+        echo "Client : " .$this->nom."<br />";
+        echo "Age : ".$this->age."<br />";
+        echo "Email : ".$this->email."<br /><br />";    
+    }
+}
+
+class Catalogue {
     public array $liste;
 
-    public function displayCat()
-    {
+    public function displayCat() {
         foreach ($this->liste as $k => $v){
             echo "ID : " . $this->liste[$k]->id . "<br />";
             echo "Article : " . $this->liste[$k]->nom . "<br />";
@@ -44,6 +56,33 @@ class Catalogue
             echo "Prix : " . $this->liste[$k]->prix . "<br />";
             echo "Image :<img src ='".$this->liste[$k]->photo."' width='100' height='100'/><br /><br />";
         }
+    }
+}
+
+class ListeClients {
+    public array $autreliste;
+
+    // public function displayClients() {
+    //     foreach ($this->autreliste as $k => $v){
+    //         echo "ID : " . $this->autreliste[$k]->id . "<br />";
+    //         echo "Personne : " . $this->autreliste[$k]->nom . "<br />";
+    //         echo "Age : " . $this->autreliste[$k]->age . "<br />";
+    //         echo "Email : " . $this->autreliste[$k]->email . "<br />";
+    //     }
+    // }
+
+    public function displayClients() {
+        
+        $arrayLength = count($this->autreliste);
+        $i = 0;
+        while($i < $arrayLength) {
+            echo "ID : " . $this->autreliste[$i]->id . "<br />";
+            echo "Personne : " . $this->autreliste[$i]->nom . "<br />";
+            echo "Age : " . $this->autreliste[$i]->age . "<br />";
+            echo "Email : " . $this->autreliste[$i]->email . "<br />";
+            $i++;
+        }
+
     }
 
 }
