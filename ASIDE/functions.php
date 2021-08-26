@@ -422,4 +422,9 @@ function afficheId($id){
 
 
 // }
+
+// displayArticle(Article){
+//     echo "Article : " . $this->nom;
+// }
+
 ?>

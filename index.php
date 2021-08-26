@@ -2,10 +2,10 @@
 
 <main>
     <?php
-        if(isset($_GET['page'])) {
-            if (isset($_GET['page'])){
-                include 'SECTION/'.$_GET['page'].'.php';
-            }
+        // if(isset($_GET['page'])) {
+        if (isset($_GET['page'])){
+            include 'SECTION/'.$_GET['page'].'.php';
+        // }
         } else {
             include ('SECTION/accueil.php');
         }

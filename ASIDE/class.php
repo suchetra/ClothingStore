@@ -131,54 +131,105 @@ class Panier {
     //     }
     // }
 
-    function totalPanier($article, $quantite) {
+    // function totalPanier($article, $quantite) {
 
-        $tab = [
-            [
-                "id" => 1,
-                "nom" => "chaussure",
-                "prix" => 70,
-                'photo' => '<img src ="../images/chaussures.jpg" width="100" height="100"/>'
-            ],
-            [
-                "id" => 2,
-                "nom" => "casquette",
-                "prix" => 20,
-                'photo' => '<img src ="../images/casquette.jpg" width="100" height="100"/>'
-            ],
-            [
-                "id" => 3,
-                "nom" => "tshirt",
-                "prix" => 40,
-                'photo' => '<img src ="../images/tshirt.jpg" width="100" height="100"/>'
-            ]
-        ];
+    //     $tab = [
+    //         [
+    //             "id" => 1,
+    //             "nom" => "chaussure",
+    //             "prix" => 70,
+    //             'photo' => '<img src ="../images/chaussures.jpg" width="100" height="100"/>'
+    //         ],
+    //         [
+    //             "id" => 2,
+    //             "nom" => "casquette",
+    //             "prix" => 20,
+    //             'photo' => '<img src ="../images/casquette.jpg" width="100" height="100"/>'
+    //         ],
+    //         [
+    //             "id" => 3,
+    //             "nom" => "tshirt",
+    //             "prix" => 40,
+    //             'photo' => '<img src ="../images/tshirt.jpg" width="100" height="100"/>'
+    //         ]
+    //     ];
     
-        foreach($tab as $element) {  
+    //     foreach($tab as $element) {  
             
-            if ($article == $element['id']){
-                // echo "<div class='"articlePanier"'>;
-                echo "Article : ".$element["photo"].'<br />';
-                echo $element["nom"].'<br />';
-                echo "Quantité et prix : ".$quantite." x ".$element["prix"], " € ".'<br/ >';
-                $total = $element["prix"] * $quantite." € ";
-                echo '<form action="index.php?page=panier" method="POST">
+    //         if ($article == $element['id']){
+    //             // echo "<div class='"articlePanier"'>;
+    //             echo "Article : ".$element["photo"].'<br />';
+    //             echo $element["nom"].'<br />';
+    //             echo "Quantité et prix : ".$quantite." x ".$element["prix"], " € ".'<br/ >';
+    //             $total = $element["prix"] * $quantite." € ";
+    //             echo '<form action="index.php?page=panierObjet" method="POST">
                 
-                <input name="id" value='.$element["id"].' type="hidden">
+    //             <input name="id" value='.$element["id"].' type="hidden">
                 
-                <input type="number" name="quantite" min="0" value="'.$quantite.'"/>
+    //             <input type="number" name="quantite" min="0" value="'.$quantite.'"/>
     
-                <input type="submit" name="modifQuantite" value="Modifier quantité">
-                </form>';
-                // echo "total : ", $element["prix"] * $quantite." € ";
-                echo "total : ".$total;
-                // echo "</div>";
-            }
-        }
+    //             <input type="submit" name="modifQuantite" value="Modifier quantité">
+    //             </form>';
+    //             // echo "total : ", $element["prix"] * $quantite." € ";
+    //             echo "total : ".$total;
+    //             // echo "</div>";
+    //         }
+    //     }
+    // }
+
+    public function add($id,$quantite) {
+        $this->panier[]=['id'=>$id, 'quantite'=>$quantite];
     }
 
-     public function add($id,$quantite) {
-        $this->panier[]=['id'=>$id, 'quantite'=>$quantite ];}
+    // s'inpirer d'article
+    public function update($id,$newQuantite) {
+        $existe = false;
+        // $key ou $truc est le premier niveau dans le var_dump : "array" (0 si un article, 1 si deux, etc.)
+        // $element est le deuxième niveau : "array" avec id et quantite
+        foreach($this->panier as $key=> $element){
+        // si le premier $key qui à pour id de la BDD le même id que l'utilisateur a sélectionné 
+            if ($this->panier[$key]['id'] == $id)
+            // $this->panier[$key]['quantite'] = $newQuantite;
+            $this->panier[$key]['quantite'] += $newQuantite;
+            $existe = true;
+        }
+
+    }
+
+
+
+
+    // public function delete($id) {
+    //     $this->panier[]=unset($_SESSION['panier']);
+    //     ;
+    // }
+
+    // s'inspirer ?
+    // function modifQuantite ($id, $quantite, $ajout) {
+    //     $existe = false;
+    //     if (!isset($_SESSION['panier'])){
+    //         $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']]; 
+    //     } else {
+    //         $modif = count($_SESSION['panier']);
+    //         for($i=0; $i<$modif; $i++){
+    //             if ($id == $_SESSION['panier'][$i]['id']){
+    //                 if ($ajout==true){
+    //                     $_SESSION['panier'][$i]['quantite'] = $quantite;
+    //                 } if ($ajout==false){
+    //                     $_SESSION['panier'][$i]['quantite'] += $quantite;
+    //                 }
+    //                 $existe = true;
+    //             }
+    //         }
+            
+    //         if (!$existe) {
+    //             $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']];
+    //         }
+    //     }
+    // }
+
+
+    
     //     $arrayLength = count($this->panier);
     //     $i = 0;
     //     $reponse = $bdd->exec(INSERT INTO 'vetements'('id', 'quantite') VALUES ($this->panier[$i]->id, $this->panier[$i]->quantite)) 
@@ -205,9 +256,8 @@ class Panier {
     //         $i++;
     //     }
     // }
-
     
-
+    
 }
 
 
