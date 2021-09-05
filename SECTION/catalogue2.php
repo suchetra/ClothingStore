@@ -42,7 +42,7 @@ if(isset($_POST['idCommande'], $_POST['idProduit'], $_POST['quantite'])){
 try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=localhost;dbname=importationetape3;charset=utf8', 'nico', 'nico');
+	$bdd = new PDO('mysql:host=localhost;dbname=importationetape3;charset=utf8', 'root', '');
 }
 catch(Exception $e)
 {

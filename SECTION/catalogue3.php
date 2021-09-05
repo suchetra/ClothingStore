@@ -1,12 +1,12 @@
 
-<h2>Le catalogue de la table vêtements de la BDD clothingstore</h2>
+<h2>Le catalogue du marché noir de clothingstore</h2>
 
 <p>Liste des produits</p>
 <?php
 try
 {
 	// On se connecte à MySQL
-	$bdd = new PDO('mysql:host=localhost;dbname=clothingstore;charset=utf8', 'nico', 'nico');
+	$bdd = new PDO('mysql:host=localhost;dbname=campus_marche_noir;charset=utf8', 'root', '');
 }
 catch(Exception $e)
 {
@@ -17,7 +17,7 @@ catch(Exception $e)
 // Si tout va bien, on peut continuer
 
 // On récupère tout le contenu de la table jeux_video
-$reponse = $bdd->query('SELECT * FROM vetements');
+$reponse = $bdd->query('SELECT * FROM produits');
 
 // On affiche chaque entrée une à une
 while ($donnees = $reponse->fetch())
