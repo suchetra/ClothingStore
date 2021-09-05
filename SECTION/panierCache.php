@@ -6,11 +6,11 @@
 <?php 
 
 if(isset($_POST['modifQuantite'])){
-    modifQuantite($_POST['id'],$_POST['quantite'], true);
+    modifQuantite($_POST['idcache'],$_POST['quantite'], true);
 }
 
 if(isset($_POST['valider'])){
-    modifQuantite($_POST['id_caton'],$_POST['quanti_caton'], false);
+    modifQuantite($_POST['idcache'],$_POST['quantite'], false);
 }
 
 
@@ -29,17 +29,13 @@ elseif(isset($_POST['effacer']) and isset($_SESSION['panier']) ) {
 
 if(isset($_SESSION['panier'])) {
     
-    echo '<div class="divPanier">';
+
     foreach($_SESSION['panier'] as $panier){
-        echo '<div class="div_sousPanier">';
         totalPanier($panier['id'], $panier['quantite']); 
         // modifQ ($panier['id'], $panier['quantite']);
         echo '<br />'; 
-        echo '<br />';
-        echo '</div>'; 
+        echo '<br />'; 
     }
-    echo '</div>';
-
     totaltotal($_SESSION['panier']);
     echo '<form action="index.php?page=panier" method="POST">
     <input type="submit" name="effacer" value="Effacer panier">

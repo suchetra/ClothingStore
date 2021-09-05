@@ -24,10 +24,10 @@ while ($donnees = $reponse->fetch())
 {
 ?>
     <p>
-    <strong>ID du produit</strong> : <?php echo $donnees['id']; ?><br />
+    <strong>ID du produit</strong> : <?php echo $donnees['idcache']; ?><br />
     Nom du produit : <?php echo $donnees['nom']; ?><br />Prix : <?php echo $donnees['prix']; ?> € <br />Photo : <img src = <?php echo $donnees['photo']; ?> width = "100"> <br />
     <form action="index.php?page=panier" method="POST">
-        <input type="hidden" name="id" value=<?php echo $donnees['id']; ?> >
+        <input type="hidden" name="idcache" value=<?php echo $donnees['idcache']; ?> >
         <input type="number" name="quantite" min="0" required="required" placeholder="Entrer une quantité"/>
         <p><input name="valider" type="submit" value="Valider" /></p>
     </form>

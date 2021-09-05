@@ -25,7 +25,7 @@ function afficheArticle3(){
 // include("catalogue.php");
 
 
-function afficheArticle($article){
+function afficheArticle($arti_affich){
     $tab = [
         [
             "id" => 1,
@@ -47,57 +47,59 @@ function afficheArticle($article){
         ]
     ];
 
-    foreach($tab as $element) {  
+    foreach($tab as $tab_elem) {  
         
-        if ($article == $element['nom']){
-            echo $element["nom"], " ";
-            echo $element["prix"], " € ";
-            echo $element["photo"], " ";
+        if ($arti_affich == $tab_elem['nom']){
+            echo $tab_elem["nom"], " ";
+            echo $tab_elem["prix"], " € ";
+            echo $tab_elem["photo"], " ";
         }
     }
 
 }
 
-function totalPanier($article, $quantite) {
+function totalPanier($arti, $quanti) {
 
     $tab = [
         [
             "id" => 1,
-            "nom" => "chaussure",
-            "prix" => 70,
-            'photo' => '<img src ="../images/chaussures.jpg" width="100" height="100"/>'
+            "nom" => "Basket - Nike
+            Air Force 1 Low Multi Swoosh",
+            "prix" => 120,
+            'photo' => '<img src ="../images/basket/1.jpg"/>'
         ],
         [
             "id" => 2,
-            "nom" => "casquette",
-            "prix" => 20,
-            'photo' => '<img src ="../images/casquette.jpg" width="100" height="100"/>'
+            "nom" => "Casquette - Nike NBA Toronto Raptors Heritage86",
+            "prix" => 35,
+            'photo' => '<img src ="../images/casquette/1.jpg"/>'
         ],
         [
             "id" => 3,
-            "nom" => "tshirt",
-            "prix" => 40,
-            'photo' => '<img src ="../images/tshirt.jpg" width="100" height="100"/>'
+            "nom" => "Tee-shirt - Nike Sportswear",
+            "prix" => 30,
+            'photo' => '<img src ="../images/tee_shirt/1.jpg"/>'
         ]
     ];
 
-    foreach($tab as $element) {  
+    foreach($tab as $tab_sous) {  
         
-        if ($article == $element['id']){
+        if ($arti == $tab_sous['id']){
             // echo "<div class='"articlePanier"'>;
-            echo "Article : ".$element["photo"].'<br />';
-            echo $element["nom"].'<br />';
-            echo "Quantité et prix : ".$quantite." x ".$element["prix"], " € ".'<br/ >';
-            $total = $element["prix"] * $quantite." € ";
+            echo "Article : ".$tab_sous["photo"].'<br />';
+            echo $tab_sous["nom"].'<br />';
+            echo '<br />';
+            echo "Quantité et prix : ".$quanti." x ".$tab_sous["prix"], " € ".'<br/ >';
+            $total = $tab_sous["prix"] * $quanti." € ";
             echo '<form action="index.php?page=panier" method="POST">
             
-            <input name="id" value='.$element["id"].' type="hidden">
+            <input name="id" value='.$tab_sous["id"].' type="hidden">
             
-            <input type="number" name="quantite" min="0" value="'.$quantite.'"/>
+            <input type="number" name="quantite" min="0" value="'.$quanti.'"/>
 
             <input type="submit" name="modifQuantite" value="Modifier quantité">
             </form>';
-            // echo "total : ", $element["prix"] * $quantite." € ";
+            // echo "total : ", $tab_sous["prix"] * $quantite." € ";
             echo "total : ".$total;
             // echo "</div>";
         }
@@ -114,25 +116,25 @@ function totalPanier($article, $quantite) {
 // }
 
 // 3e parametre valeur ini false ou true
-function modifQuantite ($id, $quantite, $ajout) {
+function modifQuantite ($id_modi, $quanti_modi, $ajout_modi) {
     $existe = false;
     if (!isset($_SESSION['panier'])){
-        $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']]; 
+        $_SESSION['panier'][] = ['id' => $_POST['id_caton'], 'quantite' => $_POST['quanti_caton']]; 
     } else {
         $modif = count($_SESSION['panier']);
         for($i=0; $i<$modif; $i++){
-            if ($id == $_SESSION['panier'][$i]['id']){
-                if ($ajout==true){
-                    $_SESSION['panier'][$i]['quantite'] = $quantite;
-                } if ($ajout==false){
-                    $_SESSION['panier'][$i]['quantite'] += $quantite;
+            if ($id_modi == $_SESSION['panier'][$i]['id']){
+                if ($ajout_modi==true){
+                    $_SESSION['panier'][$i]['quantite'] = $quanti_modi;
+                } if ($ajout_modi==false){
+                    $_SESSION['panier'][$i]['quantite'] += $quanti_modi;
                 }
                 $existe = true;
             }
         }
         
         if (!$existe) {
-            $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']];
+            $_SESSION['panier'][] = ['id' => $_POST['id_caton'], 'quantite' => $_POST['quanti_caton']];
         }
     }
 
@@ -164,21 +166,22 @@ function totaltotal($panier){
     $tab = [
         [
             "id" => 1,
-            "nom" => "chaussure",
-            "prix" => 70,
-            'photo' => '<img src ="../images/chaussures.jpg" width="100" height="100"/>'
+            "nom" => "Basket - Nike
+            Air Force 1 Low Multi Swoosh",
+            "prix" => 120,
+            'photo' => '<img src ="../images/basket/1.jpg"/>'
         ],
         [
             "id" => 2,
-            "nom" => "casquette",
-            "prix" => 20,
-            'photo' => '<img src ="../images/casquette.jpg" width="100" height="100"/>'
+            "nom" => "Casquette - Nike NBA Toronto Raptors Heritage86",
+            "prix" => 35,
+            'photo' => '<img src ="../images/casquette/1.jpg"/>'
         ],
         [
             "id" => 3,
-            "nom" => "tshirt",
-            "prix" => 40,
-            'photo' => '<img src ="../images/tshirt.jpg" width="100" height="100"/>'
+            "nom" => "Tee-shirt - Nike Sportswear",
+            "prix" => 30,
+            'photo' => '<img src ="../images/tee_shirt/1.jpg"/>'
         ]
     ];
 
@@ -195,7 +198,7 @@ function totaltotal($panier){
             }
         }
     }
-    echo "Total du panier ".$total." €";    
+    echo "Total du panier : ".$total." €";    
 }
 
 function viderPanier($panier) {
