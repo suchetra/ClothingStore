@@ -427,4 +427,51 @@ function afficheId($id){
 //     echo "Article : " . $this->nom;
 // }
 
+// function modifQuantite ($id, $quantite, $ajout) {
+//     $existe = false;
+//     if (!isset($_SESSION['panier'])){
+//         $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']]; 
+//     } else {
+//         $modif = count($_SESSION['panier']);
+//         for($i=0; $i<$modif; $i++){
+//             if ($id == $_SESSION['panier'][$i]['id']){
+               
+//                 } if ($ajout==false){
+//                     $_SESSION['panier'][$i]['quantite'] += $quantite;
+//                 }
+//                 $existe = true;
+//             }
+//         }
+        
+//         if (!$existe) {
+//             $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']];
+//         }
+//     }
+
+
+
+    
+    // function modifQuantite ($id, $quantite, $ajout) {
+    //     $existe = false;
+    //     if (!isset($_SESSION['panier'])){
+    //         $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']]; 
+    //     } else {
+    //         $modif = count($_SESSION['panier']);
+    //         for($i=0; $i<$modif; $i++){
+    //             if ($id == $_SESSION['panier'][$i]['id']){
+    //                 if ($ajout==true){
+    //                     $_SESSION['panier'][$i]['quantite'] = $quantite;
+    //                 } if ($ajout==false){
+    //                     $_SESSION['panier'][$i]['quantite'] += $quantite;
+    //                 }
+    //                 $existe = true;
+    //             }
+    //         }
+            
+    //         if (!$existe) {
+    //             $_SESSION['panier'][] = ['id' => $_POST['id'], 'quantite' => $_POST['quantite']];
+    //         }
+    //     }
+    // }
+
 ?>
